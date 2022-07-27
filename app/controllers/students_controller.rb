@@ -14,7 +14,8 @@ class StudentsController < ApplicationController
           name: names[n],
           pronouns: pronouns[n],
           called_on_count: 0,
-          mod_id: params[:id]
+          mod_id: params[:id],
+          enabled: 1
         )
       end
     else
@@ -22,7 +23,8 @@ class StudentsController < ApplicationController
                     name: params[:name],
                     pronouns: params[:pronouns],
                     called_on_count: 0,
-                    mod_id: params[:id]
+                    mod_id: params[:id],
+                    enabled: 1
                   )
     end
 
@@ -52,7 +54,8 @@ class StudentsController < ApplicationController
     student = Student.find(params[:id])
     student.update(
                   name: params[:name], 
-                  pronouns: params[:pronouns]
+                  pronouns: params[:pronouns],
+                  enabled: params[:enabled]
                 )
     redirect_to "/mods/#{student.mod_id}"
   end 
