@@ -7,3 +7,5 @@
 
   <%= form.submit 'Update Student' %>
 <% end %>
+
+<%= button_to "Move To Previous Mod", "/mods/#{@student.mod.id}/students/#{@student.id}/repeat_student", form: { data: { turbo_confirm: "Are you sure you want to move this student to the previous mod?" } }, method: :patch %>
