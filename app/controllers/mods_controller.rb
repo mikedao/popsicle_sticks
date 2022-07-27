@@ -8,8 +8,12 @@ class ModsController < ApplicationController
   end
 
   def lucky
-    mod = Mod.find(params[:id])
-    @student = mod.students.enabled.order(Arel.sql('RANDOM()')).first
-    @student.increment!(:called_on_count)
+    if params[:weighted] == true
+      @student = Student.random_weighted
+    else
+      mod = Mod.find(params[:id])
+      @student = mod.students.enabled.order(Arel.sql('RANDOM()')).first
+      @student.increment!(:called_on_count)
+    end
   end
 end

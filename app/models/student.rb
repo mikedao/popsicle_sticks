@@ -6,4 +6,14 @@ class Student < ApplicationRecord
   def self.enabled
     where(enabled: true)
   end
+
+  def self.random_weighted
+    ids = enabled.pluck(:id) * 2
+
+    where('called_on_count > ?', 0).each do |student|
+      ids.slice!(ids.index(student.id))
+    end
+
+   find(ids.shuffle.pop)
+  end
 end
