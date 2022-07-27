@@ -1,24 +1,44 @@
+<div class='container d-flex align-items-center flex-column' background-color: 'white'>
 <h1> <%= @mod.program %> <%= @mod.number %> </h1>
 
-<% @mod.students.each do |student| %>
-  <p> 
-    <%= student.name%> - <%= student.pronouns %> - <%= student.called_on_count %> - <%= link_to "Edit", "/mods/#{@mod.id}/students/#{student.id}", method: :get%> - <%= button_to "Delete Student", "/students/#{student.id}", form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %>
-  </p> 
-<% end %>
-
 <% if @mod.students.count > 0 %>
-  <p><%= button_to "Call On A Student" , "/mods/#{@mod.id}/lucky", method: :get %><p>
-  <p><%= button_to "Add A Student", "/mods/#{@mod.id}/students/new", method: :get %></p>
-  <p><%= button_to "Reset Called On Count", "/mods/#{@mod.id}/student_count", method: :delete %></p>
-  <p><%= button_to "Delete All Students",
+  <%= button_to "Call On A Student" , "/mods/#{@mod.id}/lucky", method: :get %>
+  <br>
+<table>
+  <th><%= button_to "Add A Student", "/mods/#{@mod.id}/students/new", method: :get %></th>
+  <th><%= button_to "Reset Called On Count", "/mods/#{@mod.id}/student_count", method: :delete %></th>
+  <th><%= button_to "Delete All Students",
     "/mods/#{@mod.id}/students/delete_all",
     form: { data: { turbo_confirm: "Are you sure?" } },
     method: :delete
-  %></p>
+  %></th>
+  </table>
+  <table id='student-attendances'>
+    <tr>
+      <th>Name</th>
+      <th>Pronouns</th>
+      <th>Count</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @mod.students.each do |student| %>
+      <tr>
+        <td><%= student.name%></td>
+        <td><%= student.pronouns %></td>
+        <td><%= student.called_on_count %></td>
+        <td><%= button_to "Edit", "/mods/#{@mod.id}/students/#{student.id}", method: :get%></td>
+        <td><%= button_to "Delete Student", "/students/#{student.id}", form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
 <% else %>
   <%= form_with url: "/mods/#{@mod.id}/students" do |form| %>
     <%= form.text_area :collection_names, placeholder: "Insert Names" %>
     <%= form.text_area :collection_pronouns, placeholder: "Insert Pronouns" %>
+    <br>
     <%= form.submit "Add Students" %>
   <% end %>
+
 <% end %>
+
+</div>
