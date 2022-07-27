@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Mod.create(program: 'BEE', number: '1')
+Mod.create(program: 'BEE', number: '2')
+Mod.create(program: 'BEE', number: '3')
+
+Mod.create(program: 'FEE', number: '1')
+Mod.create(program: 'FEE', number: '2')
+Mod.create(program: 'FEE', number: '3')
+
+Mod.create(program: 'Combined', number: '4')
