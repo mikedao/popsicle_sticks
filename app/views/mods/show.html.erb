@@ -7,6 +7,7 @@
 <% end %>
 
 <% if @mod.students.count > 0 %>
+  <p><%= button_to "Call On A Student" , "/mods/#{@mod.id}/lucky", method: :get %><p>
   <p><%= button_to "Add A Student", "/mods/#{@mod.id}/students/new", method: :get %></p>
   <p><%= button_to "Reset Called On Count", "/mods/#{@mod.id}/student_count", method: :delete %></p>
   <p><%= button_to "Delete All Students",
