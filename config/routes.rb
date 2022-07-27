@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/mods/:id/students/new', to: 'students#new'
   post '/mods/:id/students', to: 'students#create'
+  delete '/students/:id', to: 'students#destroy'
   delete '/mods/:id/student_count', to:'student_counts#destroy'
   get '/mods/:mod_id/students/:id', to: 'students#edit'
   patch '/mods/:mod_id/students/:id', to: 'students#update'
