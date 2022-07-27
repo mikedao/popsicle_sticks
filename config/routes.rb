@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/mods/:id/students', to: 'students#create'
   delete '/students/:id', to: 'students#destroy'
   delete '/mods/:id/student_count', to:'student_counts#destroy'
-  
+  get '/mods/:mod_id/students/:id', to: 'students#edit'
+  patch '/mods/:mod_id/students/:id', to: 'students#update'
   resources :mods, only: [:show]
 end

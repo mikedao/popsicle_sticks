@@ -1,0 +1,9 @@
+<%= form_with url: "/mods/#{@student.mod.id}/students/#{@student.id}", method: :patch, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name, value: @student.name%>
+
+  <%= form.label :pronouns %>
+  <%= form.text_field :pronouns, value: @student.pronouns %>
+
+  <%= form.submit 'Update Student' %>
+<% end %>
