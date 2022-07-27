@@ -9,6 +9,11 @@
 <% if @mod.students.count > 0 %>
   <p><%= button_to "Add A Student", "/mods/#{@mod.id}/students/new", method: :get %></p>
   <p><%= button_to "Reset Called On Count", "/mods/#{@mod.id}/student_count", method: :delete %></p>
+  <p><%= button_to "Delete All Students",
+    "/mods/#{@mod.id}/students/delete_all",
+    form: { data: { turbo_confirm: "Are you sure?" } },
+    method: :delete
+  %></p>
 <% else %>
   <%= form_with url: "/mods/#{@mod.id}/students" do |form| %>
     <%= form.text_area :collection_names, placeholder: "Insert Names" %>

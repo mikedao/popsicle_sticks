@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   delete '/mods/:id/student_count', to:'student_counts#destroy'
   get '/mods/:mod_id/students/:id', to: 'students#edit'
   patch '/mods/:mod_id/students/:id', to: 'students#update'
+  delete '/mods/:id/students/delete_all', to: 'students#destroy_all'
   resources :mods, only: [:show]
 end

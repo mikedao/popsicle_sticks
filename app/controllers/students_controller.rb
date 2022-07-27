@@ -29,6 +29,13 @@ class StudentsController < ApplicationController
     redirect_to mod_path(params[:id])
   end
 
+  def destroy_all
+    mod_id = params[:id]
+    Student.where(mod_id: mod_id).destroy_all
+
+    redirect_to mod_path(mod_id)
+  end
+
 
   def destroy
     student = Student.find(params[:id])
