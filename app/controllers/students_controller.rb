@@ -29,5 +29,12 @@ class StudentsController < ApplicationController
     redirect_to mod_path(params[:id])
   end
 
+  def destroy
+    student = Student.find(params[:id])
+    mod = student.mod.id
+    student.destroy
+    redirect_to mod_path(mod)
+  end
+
 
 end
