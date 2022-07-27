@@ -1,0 +1,9 @@
+<%= form_with url: "/mods/#{@mod_id}/students", method: :post, local: true do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :pronouns %>
+  <%= form.text_field :pronouns %>
+
+  <%= form.submit 'Create Student' %>
+<% end %>
