@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_27_141414) do
 
   create_table "students", force: :cascade do |t|
     t.string "name"
+    t.string "pronouns"
     t.integer "called_on_count"
     t.bigint "mod_id"
     t.datetime "created_at", null: false
