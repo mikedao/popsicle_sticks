@@ -1,5 +1,9 @@
 <h1> <%= @mod.program %> <%= @mod.number %> </h1>
 
+<% @mod.students.each do |student| %>
+  <p><%= student.name%> - <%= student.pronouns %></p>
+<% end %>
+
 <% if @mod.students.count > 0 %>
 
   <%= link_to "Add A Student", "/mods/#{@mod.id}/students/new" %>
