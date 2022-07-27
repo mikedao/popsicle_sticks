@@ -1,0 +1,7 @@
+<%= link_to "Back to Mod Show Page", mod_path(@student.mod_id) %>
+<center>
+  <h2>The Lucky Winner is...</h2>
+  <h1><%= @student.name %> (<%= @student.pronouns %>)</h1>
+  
+  <%= button_to "Pick Another Winner" , "/mods/#{@student.mod_id}/lucky", method: :get %>
+</center>
