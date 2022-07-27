@@ -1,3 +1,7 @@
 <h1> <%= @mod.program %> <%= @mod.number %> </h1>
 
-<%= link_to "Add A Student", "/mods/#{@mod.id}/students/new" %>
+<% if @mod.students.count > 0 %>
+
+  <%= link_to "Add A Student", "/mods/#{@mod.id}/students/new" %>
+
+<% end %>
