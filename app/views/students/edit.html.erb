@@ -5,6 +5,9 @@
   <%= form.label :pronouns %>
   <%= form.text_field :pronouns, value: @student.pronouns %>
 
+  <%= form.label :enabled %>
+  <%= form.check_box :enabled, checked: @student.enabled?  %>
+
   <%= form.submit 'Update Student' %>
 <% end %>
 
