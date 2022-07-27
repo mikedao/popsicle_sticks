@@ -57,6 +57,19 @@ class StudentsController < ApplicationController
     redirect_to "/mods/#{student.mod_id}"
   end 
 
+  def repeat_student
+    student = Student.find(params[:id])
+    current_set_mod = student.mod.number.to_i
+    new_mod = current_set_mod - 1
+    if student.mod.number.to_i > 1
+      student.update(mod_id: new_mod.to_s)
+      flash[:success] = "#{student.name} has been moved to #{student.mod.program} Mod #{new_mod}."
+    else  
+      flash[:info] = "You can only repeat students who are currently set to Mods 2, 3, or 4."
+    end 
+    redirect_to "/mods/#{current_set_mod}"
+  end 
+
 
 
 end
