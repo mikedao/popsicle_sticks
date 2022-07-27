@@ -1,7 +1,8 @@
 <h1> <%= @mod.program %> <%= @mod.number %> </h1>
 
 <% @mod.students.each do |student| %>
-  <p> <%= student.name%> - <%= student.pronouns %> - <%= student.called_on_count %> </p> 
+  <p> <%= student.name%> - <%= student.pronouns %> - <%= student.called_on_count %> 
+  <%= link_to "Edit", "/mods/#{@mod.id}/students/#{student.id}", method: :get%></p> 
 <% end %>
 
 <% if @mod.students.count > 0 %>
