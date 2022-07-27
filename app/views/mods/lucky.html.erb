@@ -3,5 +3,5 @@
   <h2>The Lucky Winner is...</h2>
   <h1><%= @student.name %> (<%= @student.pronouns %>)</h1>
   
-  <%= button_to "Pick Another Winner" , "/mods/#{@student.mod_id}/lucky", method: :get %>
+  <%= button_to "Pick Another Winner" , "/mods/#{@student.mod_id}/lucky", method: :get,class: "btn btn-primary" %>
 </center>

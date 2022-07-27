@@ -2,7 +2,7 @@
 <h1> <%= @mod.program %> <%= @mod.number %> </h1>
 
 <% if @mod.students.count > 0 %>
-  <%= button_to "Call On A Student" , "/mods/#{@mod.id}/lucky", method: :get %>
+  <%= button_to "Call On A Student" , "/mods/#{@mod.id}/lucky", class: "btn btn-primary", method: :get %>
   <br>
 <table>
   <th><%= button_to "Add A Student", "/mods/#{@mod.id}/students/new", method: :get %></th>
