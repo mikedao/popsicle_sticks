@@ -70,6 +70,42 @@ class StudentsController < ApplicationController
     redirect_to "/mods/#{current_set_mod}"
   end 
 
+  def promote_all
+    b1 = Mod.find_by(program: 'BEE', number: '1')
+    b2 = Mod.find_by(program: 'BEE', number: '2')
+    b3 = Mod.find_by(program: 'BEE', number: '3')
+
+    f1 = Mod.find_by(program: 'FEE', number: '1')
+    f2 = Mod.find_by(program: 'FEE', number: '2')
+    f3 = Mod.find_by(program: 'FEE', number: '3')
+
+    c4 = Mod.find_by(program: 'Combined', number: '4')
+
+    # remove all C4 students
+    c4.students.destroy_all
+
+    # moves b3 and f3 students to c4
+    b3.students.update_all(mod_id: c4.id)
+    f3.students.update_all(mod_id: c4.id)
+
+    # moves b2 students to b3
+    b2.students.update_all(mod_id: b3.id)
+    
+    # moves f2 students to f3
+    f2.students.update_all(mod_id: f3.id)
+
+    # moves b1 students to b2
+    b1.students.update_all(mod_id: b2.id)
+
+    # moves f1 students to f2
+    f1.students.update_all(mod_id: f2.id)
+
+    flash[:success] = "Students have been promoted."
+
+    redirect_to root_path
+    
+
+  end
 
 
 end

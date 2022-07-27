@@ -5,3 +5,6 @@
     <%= mod.program %> <%= mod.number %> <%= link_to "Show", mod_path(mod) %>
   </p>
 <% end %>
+
+
+<p><%= button_to "Promote All Students" , "/students/promote_all", form: { data: { turbo_confirm: "Are you sure?" } }, method: :patch %><p>
