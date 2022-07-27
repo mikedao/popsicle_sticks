@@ -11,3 +11,13 @@
   <p><%= button_to "Reset Called On Count", "/mods/#{@mod.id}/student_count", method: :delete %></p>
 
 <% end %>
+
+<% if @mod.students.count == 0 %>
+
+  <%= form_with url: "/mods/#{@mod.id}/students" do |form| %>
+    <%= form.text_area :collection_names, placeholder: "Insert Names" %>
+    <%= form.text_area :collection_pronouns, placeholder: "Insert Pronouns" %>
+    <%= form.submit "Add Students" %>
+  <% end %>
+
+<% end %>
