@@ -29,5 +29,18 @@ class StudentsController < ApplicationController
     redirect_to mod_path(params[:id])
   end
 
+  def edit 
+    @student = Student.find(params[:id])
+  end 
+
+  def update 
+    student = Student.find(params[:id])
+    student.update(
+                  name: params[:name], 
+                  pronouns: params[:pronouns]
+                )
+    redirect_to "/mods/#{student.mod_id}"
+  end 
+
 
 end
