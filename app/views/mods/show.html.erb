@@ -9,3 +9,13 @@
   <%= link_to "Add A Student", "/mods/#{@mod.id}/students/new" %>
 
 <% end %>
+
+<%# if @mod.students.count == 0 %>
+
+  <%= form_with url: "/mods/#{@mod.id}/students" do |form| %>
+    <%= form.text_area :collection_names, placeholder: "Insert Names" %>
+    <%= form.text_area :collection_pronouns, placeholder: "Insert Pronouns" %>
+    <%= form.submit "Whatever we want" %>
+  <% end %>
+
+<%# end %>

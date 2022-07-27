@@ -4,12 +4,32 @@ class StudentsController < ApplicationController
   end
 
   def create
-    Student.create( 
-                  name: params[:name],
-                  pronouns: params[:pronouns],
-                  called_on_count: 0,
-                  mod_id: params[:id]
-                )
+    require 'pry'; binding.pry
+    
+    if (!params[:collection_names].nil? && params[:collection_names] != "" ) &&
+       (!params[:collection_pronouns].nil? && params[:collection_pronouns] != "")
+      names = params[:collection_names].split("\n")
+      pronouns = params[:collection_pronouns].split("\n")
+      require 'pry'; binding.pry
+
+      names.count.times do |n|
+        require 'pry'; binding.pry
+        Student.create( 
+          name: names[n],
+          pronouns: pronouns[n],
+          called_on_count: 0,
+          mod_id: params[:id]
+        )
+      end
+    else
+      Student.create( 
+                    name: params[:name],
+                    pronouns: params[:pronouns],
+                    called_on_count: 0,
+                    mod_id: params[:id]
+                  )
+    end
+
     redirect_to mod_path(params[:id])
   end
 
