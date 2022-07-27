@@ -1,0 +1,7 @@
+<h1> Mod Index </h1>
+
+<% @mods.each do |mod| %>
+  <p>
+    <%= mod.program %> <%= mod.number %> <%= link_to "Show", mod_path(mod) %>
+  </p>
+<% end %>
